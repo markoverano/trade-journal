@@ -1,0 +1,108 @@
+<h4 class="modal-title">Trade Calculator</h4>
+<hr>
+<form #form="ngForm" style="overflow:auto;" (submit)="onSubmit(form)" autocomplete="off" >
+  <div class="form-row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Stock</label>
+        <input name="stock_code" #stock_code="ngModel" [(ngModel)]="formData.stock_code"
+          class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Shares</label>
+        <input type="number" step="1"  name="shares" #shares="ngModel" [(ngModel)]="formData.shares"
+          (keyup)='calculateTrade(shares.value, entry_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group"> <label class="control-label">Entry Price</label>
+        <input type="number" min="0" name="entry_price" #entry_price="ngModel" [(ngModel)]="formData.entry_price"
+          (keyup)='calculateTrade(shares.value, entry_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="-1">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group"> <label class="control-label">Exit Price</label>
+        <input type="number" min="0" name="exit_price" #exit_price="ngModel" [(ngModel)]="formData.exit_price"
+        class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min"
+          tabindex="-1">
+      </div>
+    </div>
+  </div>
+  <hr style="margin-top: 5px; margin-bottom: 10px;">
+  <div class="form-row">
+    <div class="col-md-10">
+      <div class="form-horizontal">
+        <div class="card-deck">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Buy Result</div>
+            <div class="card-body text-dark">
+              <div class="col-md-3">
+                <div class="form-group"> <label class="control-label">Gross Amount</label>
+                  <input type="number" min="0" name="entry_gross_amt" #entry_gross_amt="ngModel" [(ngModel)]="formData.entry_gross_amt"
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min"
+                    tabindex="-1">
+                </div>
+              </div>
+              <div class="border border-primary">
+                  <div class="input-group"> <label> Commission</label>
+                    <input type="number" style="width: 20px;" readonly="true" 
+                    name="entry_commission" #entry_commission="ngModel" [(ngModel)]="formData.entry_commission"
+                    class="form-control"
+                      tabindex="-1">
+                  </div>
+                <div class="form-group"> <label class="col-xs-3 control-label text-left">VAT</label>
+                </div>
+                <div class="form-group"> <label class="col-xs-3 control-label text-left">Transfer Fee
+                    0.00</label>
+                </div>
+
+                <div class="form-group"> <label class="col-xs-3 control-label text-left">SCCP 0.00</label>
+                </div>
+
+                <div class="form-group"> <label class="col-xs-3 control-label text-left">Total Charges
+                    0.00</label>
+                </div>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Net Amount 0.00</label>
+              </div>
+            </div>
+          
+          </div>
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Sell Result</div>
+            <div class="card-body text-dark">
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Gross Amount 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Commission 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">VAT 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Transfer Fee 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">SCCP 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Sales Tax 0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Total Charges
+                  0.00</label>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Net Amount 0.00</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i>
+          Close</button>
+      </div>
+
+    </div>
+  </div>
+</form>

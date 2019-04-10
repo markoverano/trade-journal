@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TradeJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Guid" Nullable="false" />
+    <Property Name="User_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="TradeJournalDBModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Journals" EntityType="TradeJournalModel.Journal" />
+  </EntityContainer>
+  <EntityType Name="Journal">
+    <Key>
+      <PropertyRef Name="journal_id" />
+    </Key>
+    <Property Name="journal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stock_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="journal_date" Type="DateTime" Precision="3" />
+    <Property Name="entry_date" Type="DateTime" Precision="3" />
+    <Property Name="exit_date" Type="DateTime" Precision="3" />
+    <Property Name="entry_reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="exit_reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="shares" Type="Int32" />
+    <Property Name="entry_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="entry_clearing_fee" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="entry_commission" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="entry_vat" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="entry_trans_fee" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="entry_gross_amt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="exit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="exit_clearing_fee" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_commission" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_trans_fee" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_vat" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_sales_tax" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_gross_amt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="entry_charge_total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="exit_charge_total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="profit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="gain_percentage" Type="Decimal" Precision="6" Scale="2" />
+  </EntityType>
+</Schema>

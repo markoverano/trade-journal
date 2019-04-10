@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TradeJournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="journal_id" />
+          </Key>
+          <Property Name="journal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stock_code" Type="varchar" MaxLength="50" />
+          <Property Name="journal_date" Type="datetime" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="exit_date" Type="datetime" />
+          <Property Name="entry_reason" Type="varchar(max)" />
+          <Property Name="exit_reason" Type="varchar(max)" />
+          <Property Name="shares" Type="int" />
+          <Property Name="entry_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="entry_clearing_fee" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="entry_commission" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="entry_vat" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="entry_trans_fee" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="entry_gross_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="exit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="exit_clearing_fee" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_commission" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_trans_fee" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_vat" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_sales_tax" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_gross_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="entry_charge_total" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="exit_charge_total" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="profit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="gain_percentage" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="TradeJournalModelStoreContainer">
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TradeJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Guid" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="TradeJournalDBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Journals" EntityType="TradeJournalModel.Journal" />
+        </EntityContainer>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="journal_id" />
+          </Key>
+          <Property Name="journal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stock_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="journal_date" Type="DateTime" Precision="3" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="exit_date" Type="DateTime" Precision="3" />
+          <Property Name="entry_reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="exit_reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="shares" Type="Int32" />
+          <Property Name="entry_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="entry_clearing_fee" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="entry_commission" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="entry_vat" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="entry_trans_fee" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="entry_gross_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="exit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="exit_clearing_fee" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_commission" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_trans_fee" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_vat" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_sales_tax" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_gross_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="entry_charge_total" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="exit_charge_total" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="profit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="gain_percentage" Type="Decimal" Precision="6" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TradeJournalModelStoreContainer" CdmEntityContainer="TradeJournalDBModel">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TradeJournalModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="TradeJournalModel.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="gain_percentage" ColumnName="gain_percentage" />
+                <ScalarProperty Name="profit" ColumnName="profit" />
+                <ScalarProperty Name="exit_charge_total" ColumnName="exit_charge_total" />
+                <ScalarProperty Name="entry_charge_total" ColumnName="entry_charge_total" />
+                <ScalarProperty Name="exit_gross_amt" ColumnName="exit_gross_amt" />
+                <ScalarProperty Name="exit_sales_tax" ColumnName="exit_sales_tax" />
+                <ScalarProperty Name="exit_vat" ColumnName="exit_vat" />
+                <ScalarProperty Name="exit_trans_fee" ColumnName="exit_trans_fee" />
+                <ScalarProperty Name="exit_commission" ColumnName="exit_commission" />
+                <ScalarProperty Name="exit_clearing_fee" ColumnName="exit_clearing_fee" />
+                <ScalarProperty Name="exit_price" ColumnName="exit_price" />
+                <ScalarProperty Name="entry_gross_amt" ColumnName="entry_gross_amt" />
+                <ScalarProperty Name="entry_trans_fee" ColumnName="entry_trans_fee" />
+                <ScalarProperty Name="entry_vat" ColumnName="entry_vat" />
+                <ScalarProperty Name="entry_commission" ColumnName="entry_commission" />
+                <ScalarProperty Name="entry_clearing_fee" ColumnName="entry_clearing_fee" />
+                <ScalarProperty Name="entry_price" ColumnName="entry_price" />
+                <ScalarProperty Name="shares" ColumnName="shares" />
+                <ScalarProperty Name="exit_reason" ColumnName="exit_reason" />
+                <ScalarProperty Name="entry_reason" ColumnName="entry_reason" />
+                <ScalarProperty Name="exit_date" ColumnName="exit_date" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="journal_date" ColumnName="journal_date" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="journal_id" ColumnName="journal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

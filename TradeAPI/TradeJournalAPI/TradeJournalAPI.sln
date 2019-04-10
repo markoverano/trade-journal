@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeJournalAPI", "TradeJournalAPI\TradeJournalAPI.csproj", "{D3245D05-787C-461D-B764-AA9A6E0D3A77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3245D05-787C-461D-B764-AA9A6E0D3A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3245D05-787C-461D-B764-AA9A6E0D3A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3245D05-787C-461D-B764-AA9A6E0D3A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3245D05-787C-461D-B764-AA9A6E0D3A77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7ABCB4D-A3B0-410C-B258-606F76240243}
+	EndGlobalSection
+EndGlobal

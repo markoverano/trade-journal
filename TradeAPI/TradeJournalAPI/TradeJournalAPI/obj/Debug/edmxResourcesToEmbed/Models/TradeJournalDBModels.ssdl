@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TradeJournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Journal">
+    <Key>
+      <PropertyRef Name="journal_id" />
+    </Key>
+    <Property Name="journal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stock_code" Type="varchar" MaxLength="50" />
+    <Property Name="journal_date" Type="datetime" />
+    <Property Name="entry_date" Type="datetime" />
+    <Property Name="exit_date" Type="datetime" />
+    <Property Name="entry_reason" Type="varchar(max)" />
+    <Property Name="exit_reason" Type="varchar(max)" />
+    <Property Name="shares" Type="int" />
+    <Property Name="entry_price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="entry_clearing_fee" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="entry_commission" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="entry_vat" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="entry_trans_fee" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="entry_gross_amt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="exit_price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="exit_clearing_fee" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_commission" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_trans_fee" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_vat" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_sales_tax" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_gross_amt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="entry_charge_total" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="exit_charge_total" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="profit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="gain_percentage" Type="decimal" Precision="6" Scale="2" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="User_Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="TradeJournalModelStoreContainer">
+    <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

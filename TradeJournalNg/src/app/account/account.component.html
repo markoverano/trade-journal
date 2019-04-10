@@ -1,0 +1,46 @@
+<!-- 
+  account summary,
+  winrate,
+charts -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="mb-3 shadow block-status bg-primary text-white">
+        <div class="panel panel-default linear-gradient(to right,#31b2eb,#0473c7)">
+          <div class="panel-body" style="height: 265px;">
+            <div class="row">
+              <div class="col-md-5">
+                <p>Welcome,</p>
+                <h3>{{account.userName}}</h3>
+                <p>Available Cash</p>
+                <p>{{account.totalCash}}</p>
+                <p>Total Equity</p>
+                <p>{{account.totalEquity}}</p>
+                <button type="button" class="btn btn-outline btn-default" (click)="setFunds">Withdraw/Deposit
+                  Funds</button>
+              </div>
+              <!-- chart here -->
+              <div class="col-md-7">
+                <div class="allocationPieChartContainer">
+                  <app-account-summary-pie-chart></app-account-summary-pie-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- <p>port performance</p> -->
+    <div class="col-lg-4" style="height: 200px; width:300px; background-color:blue;"></div>
+    <div class="col-lg-4" style="height: 200px; width:300px; background-color:green;"></div>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-3" style="height: 100px; width:200px; background-color:yellow;"></div>
+      <div class="col-lg-3" style="height: 100px; width:200px; background-color:black;"></div>
+      <div class="col-lg-3" style="height: 100px; width:200px; background-color:red;"></div>
+    </div>
+  </div>
