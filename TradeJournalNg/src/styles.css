@@ -56,8 +56,6 @@ a:hover {
     padding: 30px;
 }
 
-
-
 .jumbotron{
     padding-top: 0px;
     background: #fff;
@@ -69,4 +67,10 @@ a:hover {
 
 table.table-hover tbody tr:hover{
 cursor: pointer;
+}
+
+label, input, textarea, button, p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small !important;
+    margin-bottom: -0.5rem;
 }

@@ -10,5 +10,6 @@ namespace TradeJournalAPI.Interfaces
     public interface IJournalRepository: IRepository<Journal>
     {
         IEnumerable<Journal> GetTotalEquity();
+        IEnumerable<Journal> GetAllJournals();
     }
 }

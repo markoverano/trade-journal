@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {JournalEntriesService} from '../shared/journal-entries.service';
+import { JournalEntriesService } from '../shared/services/journal-entries.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import {CalcComponent } from '../calc/calc.component';
+import { CalcComponent } from '../calc/calc.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-journal',
@@ -10,23 +11,31 @@ import {CalcComponent } from '../calc/calc.component';
 })
 export class JournalComponent implements OnInit {
 
-  constructor(
-    private service: JournalEntriesService,
-    private dialog: MatDialog) { }
+  list: any[];
+
+  constructor(private service: JournalEntriesService, private dialog: MatDialog) { 
+    //stuff
+  }
 
   ngOnInit() {
-    // this.service.refreshList();
+
+    this.service.getJournalEntries().subscribe((res: any) => {
+      this.list = res;
+    });
   }
 
   AddOrEditOrderItem() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width = "50%";
-    dialogConfig.data = { };
+    dialogConfig.width = "55%";
+    dialogConfig.height = "80%";
+    dialogConfig.data = {};
     this.dialog.open(CalcComponent, dialogConfig).afterClosed().subscribe(res => {
       // this.updateGrandTotal();
     });
   }
+
+
 
 }

@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { JournalComponent } from './journal/journal.component';
-import { JournalEntries } from './shared/journal-entries.model';
+import { Journal } from './shared/models/journal-entries.model';
 import { CalcComponent } from './calc/calc.component';
 import { AccountComponent } from './account/account.component';
 import { FundComponent } from './account/fund/fund.component';
@@ -45,7 +45,7 @@ import { AccountSummaryPieChartComponent } from './charts/account-summary-pie-ch
     HttpClientModule
   ],
   entryComponents: [CalcComponent],
-  providers: [JournalEntries],
+  providers: [Journal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

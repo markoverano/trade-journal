@@ -17,5 +17,10 @@ namespace TradeJournalAPI.Repositories
         {
             return _ctx.Journals.Where(x => x.gain_percentage > 0);
         }
+
+        public IEnumerable<Journal> GetAllJournals()
+        {
+            return _ctx.Journals.AsQueryable();
+        }
     }
 }

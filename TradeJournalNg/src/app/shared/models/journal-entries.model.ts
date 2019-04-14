@@ -1,11 +1,10 @@
-export class JournalEntries{
+export class Journal{
     journal_id: number;
     stock_code: string;
     shares: number;
     journal_date: Date;
     entry_date: Date;
     exit_date: Date;
-    profit: number;
     gain_loss: number;
     entry_net_amt: number;
     exit_net_amt: number;
@@ -24,5 +23,9 @@ export class JournalEntries{
     exit_gross_amt: number;
     entry_charge_total: number;
     exit_charge_total: number;
+
+    profit: number;
+    break_even: number;
+    cut_loss: number;
     gain_percentage: number;
 }

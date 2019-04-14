@@ -9,14 +9,16 @@ charts -->
         <div class="panel panel-default linear-gradient(to right,#31b2eb,#0473c7)">
           <div class="panel-body" style="height: 265px;">
             <div class="row">
-              <div class="col-md-5">
-                <p>Welcome,</p>
+              <div class="col-md-5" style="padding-left:30px; padding-top:6px;">
+                <p>Welcome to TradeJernel,</p>
                 <h3>{{account.userName}}</h3>
+                <div style="padding-left:5px; padding-top: 5px;">
                 <p>Available Cash</p>
-                <p>{{account.totalCash}}</p>
+                <p>PHP {{account.totalCash}}</p>
                 <p>Total Equity</p>
-                <p>{{account.totalEquity}}</p>
-                <button type="button" class="btn btn-outline btn-default" (click)="setFunds">Withdraw/Deposit
+                <p>PHP {{account.totalEquity}}</p>
+              </div>
+                <button type="submit" class="btn btn-outline btn-default" (click)="setFunds">Withdraw/Deposit
                   Funds</button>
               </div>
               <!-- chart here -->
