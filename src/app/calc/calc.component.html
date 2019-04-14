@@ -1,0 +1,146 @@
+<div>
+  <h2 class="modal-title">Trade Calculator</h2>
+</div>
+<hr>
+<form #form="ngForm" style="height: 500px;" (submit)="onSubmit(form)" autocomplete="off">
+  <div class="form-row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Stock</label>
+        <input name="stock_code" style="text-transform:uppercase" #stock_code="ngModel"
+          [(ngModel)]="formData.stock_code"
+          class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step" tabindex="1">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Shares</label>
+        <input type="number" min="1" name="shares" #shares="ngModel" [(ngModel)]="formData.shares"
+          (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step" tabindex="2">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group"> <label class="control-label">Entry Price</label>
+        <input type="number" min="1" name="entry_price" #entry_price="ngModel" [(ngModel)]="formData.entry_price"
+          (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="3">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group"> <label class="control-label">Exit Price</label>
+        <input type="number" min="1" name="exit_price" #exit_price="ngModel" [(ngModel)]="formData.exit_price"
+          (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="4">
+      </div>
+    </div>
+  </div>
+  <div class="form-row" style="margin-top: 15px; margin-bottom: 10px;">
+    <div class="col-md-12">
+
+      <div class="form-horizontal">
+        <div class="card-deck">
+          <div class="card border-gray mb-3" style="max-width: 20rem;">
+            <div class="card-header">Buy Result</div>
+            <div class="card-body" style="height:70px !important;">
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Gross Amount
+                  <b> {{formData.entry_gross_amt | number}} </b></label>
+              </div>
+              <div class="border border-gray">
+                <div style="padding:8px;">
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Commission
+                      {{formData.entry_commission | number}} </label>
+                  </div>
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">VAT
+                      {{formData.entry_vat | number}}</label>
+                  </div>
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Transfer Fee
+                      {{formData.entry_trans_fee | number}}</label>
+                  </div>
+
+                  <div class="form-group"> <label value="0.00" class="col-xs-3 control-label text-left">SCCP
+                      {{formData.entry_clearing_fee | number}}</label>
+                  </div>
+
+                  <div class="form-group"> <label value="0.00" class="col-xs-3 control-label text-left">Total Charges
+                      <b> {{formData.entry_charge_total | number}} </b></label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" style="position:absolute; bottom: 10px;"> <label
+                  class="col-xs-3 control-label text-left">Net Amount
+                  <b>{{formData.entry_net_amt | number}}</b></label>
+              </div>
+            </div>
+
+          </div>
+          <div class="card border-gray mb-3" style="max-width: 20rem;">
+            <div class="card-header">Sell Result</div>
+            <div class="card-body text-dark">
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Gross Amount <b>
+                    {{formData.exit_gross_amt | number}} </b></label>
+              </div>
+              <div class="border border-gray">
+                <div style="padding:8px;">
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Commission  {{formData.exit_commission | number}}  </label>
+                  </div>
+                  <div class="form-group"> <label
+                      class="col-xs-3 control-label text-left">VAT  {{formData.exit_vat | number}} </label>
+                  </div>
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Transfer
+                      Fee  {{formData.exit_trans_fee | number}}</label>
+                  </div>
+                  <div class="form-group"> <label
+                      class="col-xs-3 control-label text-left">SCCP  {{formData.exit_clearing_fee | number}} </label>
+                  </div>
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Sales
+                      Tax  {{formData.exit_sales_tax | number}} </label>
+                  </div>
+                  <div class="form-group"> <label class="col-xs-3 control-label text-left">Total Charges <b>
+                         {{formData.exit_charge_total | number}} </b></label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"> <label class="col-xs-3 control-label text-left">Net Amount <b>
+                     {{formData.exit_net_amt  | number}} </b></label>
+              </div>
+            </div>
+          </div>
+          <div style="max-width: 25rem; margin-top: 20px;">
+            <div class="form-group"> <label class="col-xs-3 control-label text-left">PROFIT <b>  {{formData.profit | number}}
+                </b></label>
+            </div>
+            <div class="form-group"> <label class="col-xs-3 control-label text-left">GAIN/LOSS  {{formData.gain_loss | number}}%</label>
+            </div>
+            <div class="form-group"> <label
+                class="col-xs-3 control-label text-left">CUTLOSS  {{formData.cut_loss | number}}</label>
+            </div>
+            <div class="form-group"> <label class="col-xs-3 control-label text-left">BREAK-EVEN
+                 {{ formData.break_even | number }}</label>
+            </div>
+            <div class="form-group"> <label class="col-xs-3 control-label text-left">Reason for buying</label>
+              <textarea class="form-control" id="exampleTextarea" rows="3"
+                style="margin-top: 0px; margin-bottom: 0px; height: 63px;" tabindex="5"></textarea>
+
+            </div>
+            <div class="form-group"> <label class="col-xs-3 control-label text-left">Reason for selling</label>
+              <textarea class="form-control" id="exampleTextarea" rows="3"
+                style="margin-top: 0px; margin-bottom: 0px; height: 63px;" tabindex="6"></textarea>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark" tabindex="7"><i class="fa fa-database"></i> Submit</button>
+        <button type="button" (click)="resetForm()" class="btn btn-outline-dark ml-1"><i class="fa fa-close"></i>
+          Reset</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i>
+          Close</button>
+      </div>
+
+    </div>
+  </div>
+</form>

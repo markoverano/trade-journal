@@ -1,0 +1,76 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color:#fff;
+    color:black;
+    height: 100%;
+}
+
+/* a {
+    color: #44a4cd;
+}
+
+a:hover {
+    color: #44a8cf;
+} */
+
+.shadow {
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 5px 6px rgba(0,0,0,0.3);
+}
+
+.section-container {
+    padding: 30px;
+}
+
+.card-theme {
+    background-color: #191F26;
+    border: none;
+    border-radius: 2px;
+}
+
+.card-heading-theme{
+    color: #eee;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    padding: 12px;
+}
+
+.card-body-theme{
+    background-color: #494F56;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-container {
+    padding: 30px;
+}
+
+.jumbotron{
+    padding-top: 0px;
+    background: #fff;
+}
+
+.form-control,.input-group-text{
+    border:1px solid #0080ff;
+}
+
+table.table-hover tbody tr:hover{
+cursor: pointer;
+}
+
+label, input, textarea, button, p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small !important;
+    margin-bottom: -0.5rem;
+}

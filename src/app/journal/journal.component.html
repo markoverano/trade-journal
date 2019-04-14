@@ -1,0 +1,50 @@
+<div>
+    <h2 class="modal-title">Trade Calculator</h2>
+    <a class="btn btn-outline-success" (click)='AddOrEditOrderItem()'><i class="fa fa-plus-square"></i>
+      Create
+      New</a>
+  </div>
+<div class="col-sm-12">
+  <div class="card box-shadow">
+    <div class="table-responsive bg-light">
+      <div class="card-body">
+        <table class="table table-striped table-sm">
+          <!-- table table-striped table-sm table-hover -->
+          <thead>
+            <tr>
+              <th>Stock</th>
+              <th>Shares</th>
+              <th>Entry Price</th>
+              <th>Exit Price</th>
+              <th>Profit</th>
+              <th>Gain/Loss</th>
+              <th>Entry Net Amt</th>
+              <th>Exit Net Amt</th>
+         
+            </tr>
+          </thead>
+          <tbody>
+            <!--     
+          <tr *ngIf="list.length==0">
+              <td class="font-italic text-center" colspan="5">
+                No entries betch.
+              </td>
+            </tr> -->
+
+            <tr *ngFor="let entry of list">
+              <td>{{ entry.stock_code }}</td>
+              <td>{{ entry.shares }}</td>
+              <td>{{ entry.entry_price }}</td>
+              <!-- <td>{{ entry.entry_date | date : 'short'}}</td> -->
+              <td>{{ entry.exit_price }}</td>
+              <!-- <td>{{ entry.exit_date | date : 'short'}}</td> -->
+              <td>{{ entry.profit }}</td>
+              <td>{{ entry.gain_loss }}</td>
+              <td>{{ entry.entry_net_amt }}</td>
+              <td>{{ entry.exit_net_amt }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
