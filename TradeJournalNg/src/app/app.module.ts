@@ -10,29 +10,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-
-import { JournalComponent } from './journal/journal.component';
+import { JournalComponent } from './dashboard/journal/journal.component';
 import { Journal } from './shared/models/journal-entries.model';
-import { CalcComponent } from './calc/calc.component';
-import { AccountComponent } from './account/account.component';
-import { FundComponent } from './account/fund/fund.component';
+import { CalcComponent } from './dashboard/calc/calc.component';
+import { AccountComponent } from './dashboard/account/account.component';
 
-import { AccountPerformanceChartComponent } from './charts/account-performance-chart/account-performance-chart.component';
-import { AccountSummaryPieChartComponent } from './charts/account-summary-pie-chart/account-summary-pie-chart.component';
+import { AccountPerformanceChartComponent } from './dashboard/charts/account-performance-chart/account-performance-chart.component';
+import { AccountSummaryPieChartComponent } from './dashboard/charts/account-summary-pie-chart/account-summary-pie-chart.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SidebarComponent,
     AccountComponent,
     AccountSummaryPieChartComponent,
-    FundComponent,
     JournalComponent,
     AccountPerformanceChartComponent,
-    CalcComponent
+    CalcComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
