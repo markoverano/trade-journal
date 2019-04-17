@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Journal } from '../shared/models/journal-entries.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { JournalEntriesService } from '../shared/services/journal-entries.service';
-import * as utilities from '../shared/helpers/utilities';
+import { Journal } from '../../shared/models/journal-entries.model';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDatepickerModule, MatDatepicker } from "@angular/material";
+import { JournalEntriesService } from '../../shared/services/journal-entries.service';
+import * as utilities from '../../shared/helpers/utilities';
 // import * as angular from 'angular';
+
 
 //@tdodo refactor
 //@todo convert this to server data
@@ -151,13 +152,9 @@ export class CalcComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // let x  = angular.extend(this.formData, form.value);
-    //this.formData.entry_gross_amt = this.totalx;
-    this.formData.stock_code = form.value.stock_code;
     this.formData.shares = form.value.shares;
-    //this.orderSevice.orderItems.push(form.value);
+    this.formData.stock_code = form.value.stock_code;
     this.service.saveOrUpdateJournal(this.formData).subscribe((result) => {
-      // This code will be executed when the HTTP call returns successfully 
       console.log(result);
   });
   }

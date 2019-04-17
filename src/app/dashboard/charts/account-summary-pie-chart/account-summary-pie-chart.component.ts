@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { THEME_COLORS } from '../../shared/helpers/theme-colors';
+import { THEME_COLORS } from '../../../shared/helpers/theme-colors';
 
 const theme = 'Bright';
 
@@ -27,8 +27,12 @@ export class AccountSummaryPieChartComponent implements OnInit {
 
   options: [{
     responsive: true,
+        
     legend: {
       position: 'left',
+      labels: {
+        usePointStyle: true,
+      }
     },
 
     animation: {
@@ -41,8 +45,7 @@ export class AccountSummaryPieChartComponent implements OnInit {
   }
 
   themeColors(setName: string): string[] {
-    const c = THEME_COLORS.slice(0)
-      .find(set => set.name === setName).colorSet;
+    const c = THEME_COLORS.slice(0).find(set => set.name === setName).colorSet;
 
     return c;
   }

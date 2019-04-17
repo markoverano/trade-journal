@@ -12,6 +12,7 @@ body {
     background-color:#fff;
     color:black;
     height: 100%;
+    font-size: 0.8rem !important;
 }
 
 /* a {

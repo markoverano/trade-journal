@@ -1,10 +1,10 @@
 <div>
-  <h2 class="modal-title">Trade Calculator</h2>
+  <h5 class="modal-title">Trade Calculator</h5>
 </div>
 <hr>
 <form #form="ngForm" style="height: 500px;" (submit)="onSubmit(form)" autocomplete="off">
   <div class="form-row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label>Stock</label>
         <input name="stock_code" style="text-transform:uppercase" #stock_code="ngModel"
@@ -12,7 +12,7 @@
           class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step" tabindex="1">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label>Shares</label>
         <input type="number" min="1" name="shares" #shares="ngModel" [(ngModel)]="formData.shares"
@@ -20,20 +20,37 @@
           class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step" tabindex="2">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group"> <label class="control-label">Entry Price</label>
         <input type="number" min="1" name="entry_price" #entry_price="ngModel" [(ngModel)]="formData.entry_price"
           (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
           class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="3">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group"> <label class="control-label">Exit Price</label>
         <input type="number" min="1" name="exit_price" #exit_price="ngModel" [(ngModel)]="formData.exit_price"
           (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
           class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="4">
       </div>
     </div>
+
+<!-- add datepicker here
+    <div class="col-md-2">
+      <div class="form-group"> <label class="control-label">Entry Date</label>
+        <input [matDatepicker]="myDatepicker">
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group"> <label class="control-label">Exit Date</label>
+        <input type="number" min="1" name="exit_price" #exit_price="ngModel" [(ngModel)]="formData.exit_price"
+          (keyup)='calculateTrade(shares.value, entry_price.value, exit_price.value)'
+          class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min" tabindex="4">
+      </div>
+    </div>
+ -->
+
   </div>
   <div class="form-row" style="margin-top: 15px; margin-bottom: 10px;">
     <div class="col-md-12">

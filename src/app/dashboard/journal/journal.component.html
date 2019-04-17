@@ -1,0 +1,57 @@
+<div class="col-sm-14">
+  <div class="card box-shadow">
+    <div class="table-responsive bg-light">
+      <button type="button" style="float: right; margin-right: 15px;  margin-top: 13px;" (click)='addTradeEntry()'
+        class="btn btn-sm btn-outline-dark ">Enter Trades</button>
+
+      <div class="card-body">
+        <h6>Trade Journal</h6>
+
+        <table class="table table-sm">
+          <!-- table table-striped table-sm table-hover -->
+          <thead>
+            <tr>
+              <th>Stock</th>
+              <th>Shares</th>
+              <th>Entry Price</th>
+              <th>Exit Price</th>
+            
+              <th>Entry Net Amt</th>
+              <th>Exit Net Amt</th>
+              <th>Gain/Loss</th>
+              <th>Profit</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- <tr *ngIf="list != 0">
+              <td class="font-italic text-center" colspan="12">
+                No entries found.
+              </td>
+            </tr> -->
+
+            <tr *ngFor="let entry of list">
+              <td>{{ entry.stock_code }}</td>
+              <td>{{ entry.shares | number }}</td>
+              <td>{{ entry.entry_price | number }}</td>
+              <!-- <td>{{ entry.entry_date | date : 'short'}}</td> -->
+              <td>{{ entry.exit_price | number }}</td>
+              <!-- <td>{{ entry.exit_date | date : 'short'}}</td> -->
+             
+              <td>{{ entry.entry_net_amt | number }}</td>
+              <td>{{ entry.exit_net_amt | number }}</td>
+              <td>{{ entry.gain_loss }}%</td>
+              <td>{{ entry.profit | number }}</td>
+
+              <td>
+                <a class="btn btn-sm" (click)="AddOrEditOrderItem(i,service.formData.OrderID)"><i
+                    class="fas fa-pen"></i></a>
+                <a class="btn btn-sm" (click)="onDeleteOrderItem(item.OrderItemID,i)"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
